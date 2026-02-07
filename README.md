@@ -1,4 +1,4 @@
-# 🏢 HR Management System
+<h1 align="center">HR Management System</h1> 
 
 <div align="center">
 
