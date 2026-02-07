@@ -1,0 +1,34 @@
+# Compiled binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+kkhris-server
+
+# Test files
+*_test.go
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose*.yml
+
+# Documentation
+README.md
+*.md
+
+# Local data files (use MongoDB in production)
+data.json
+
+# Logs
+*.log

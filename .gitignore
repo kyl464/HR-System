@@ -1,0 +1,119 @@
+# ========================================
+# KKHRIS - Git Ignore Configuration
+# ========================================
+
+# ==================
+# Sensitive Data
+# ==================
+# Data files containing user information
+backend/data.json
+*.env
+.env
+.env.*
+!.env.example
+
+# Database credentials and connection strings
+*.sqlite
+*.db
+*.sql
+
+# Secret keys and certificates
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
+
+# ==================
+# Backend (Go)
+# ==================
+# Compiled binaries
+backend/*.exe
+backend/*.exe~
+backend/kkhris-server
+backend/kkhris-server.exe
+backend/kkhris-server.exe~
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go vendor directory (if using)
+vendor/
+
+# Go build cache
+*.test
+*.out
+
+# ==================
+# Frontend (Next.js)
+# ==================
+# Dependencies
+frontend/node_modules/
+node_modules/
+
+# Next.js build output
+frontend/.next/
+frontend/out/
+
+# Production build
+frontend/build/
+
+# Cache
+.cache/
+*.cache
+
+# ==================
+# IDE & Editor
+# ==================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ==================
+# Logs & Debug
+# ==================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Debug files
+BUG.txt
+DEBUG.txt
+debug/
+
+# ==================
+# OS Generated
+# ==================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ==================
+# Miscellaneous
+# ==================
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Coverage & Test Results
+coverage/
+.nyc_output/
+*.lcov
+
+# Local config overrides
+*.local
+local.config.*
