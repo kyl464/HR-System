@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+	"os"
+	"strings"
 
 	"kkhris-clone/database"
 	"kkhris-clone/handlers"
@@ -49,11 +51,16 @@ func main() {
 
 	// CORS configuration
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{
-		"http://localhost:3000",
-		"https://kkhris.works",
-		"https://www.kkhris.works",
+
+	// Read allowed origins from environment variable (comma-separated)
+	corsOrigins := os.Getenv("CORS_ORIGINS")
+	if corsOrigins != "" {
+		config.AllowOrigins = strings.Split(corsOrigins, ",")
+	} else {
+		// Default fallback for local development
+		config.AllowOrigins = []string{"http://localhost:3000"}
 	}
+
 	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"}
 	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 	r.Use(cors.New(config))
