@@ -175,8 +175,7 @@ type AwardMongo struct {
 func ConnectMongoDB() error {
 	uri := os.Getenv("MONGODB_URI")
 	if uri == "" {
-		// MongoDB Atlas connection string
-		uri = "mongodb+srv://admin:DEMO@hris-demo.lvd8luy.mongodb.net/?appName=HRIS-Demo"
+		return fmt.Errorf("MONGODB_URI environment variable is required")
 	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)

@@ -106,15 +106,25 @@ cd ../backend && go mod download
 
 3. **Environment Setup**
 
-Create `.env` files in both frontend and backend directories:
+Copy the example environment file and configure your credentials:
 
 ```bash
-# backend/.env
-MONGODB_URI=mongodb://localhost:27017/hr_system
-JWT_SECRET=your-secret-key
+# Backend configuration
+cd backend
+cp .env.example .env
+# Edit .env with your MongoDB credentials
 
-# frontend/.env.local
-NEXT_PUBLIC_API_URL=http://localhost:8080
+# Frontend configuration (optional)
+cd ../frontend
+cp .env.example .env.local  # if needed
+```
+
+The backend `.env` file should contain:
+
+```bash
+MONGODB_URI=mongodb+srv://username:password@your-cluster.mongodb.net/?appName=YourApp
+MONGODB_DB=HRIS-Demo
+JWT_SECRET=your-super-secret-jwt-key
 ```
 
 4. **Start the development servers**

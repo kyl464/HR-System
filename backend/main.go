@@ -9,9 +9,15 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	// Load .env file
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found, using environment variables")
+	}
+
 	// Connect to MongoDB
 	if err := database.ConnectMongoDB(); err != nil {
 		log.Fatal("Failed to connect to MongoDB:", err)
