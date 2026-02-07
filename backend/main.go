@@ -58,6 +58,14 @@ func main() {
 	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 	r.Use(cors.New(config))
 
+	// Health check endpoint
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status":  "ok",
+			"message": "HR System API is running",
+		})
+	})
+
 	// Public routes (no auth required)
 	api := r.Group("/api")
 	{
