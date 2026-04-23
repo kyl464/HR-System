@@ -20,13 +20,13 @@ func main() {
 		log.Println("No .env file found, using environment variables")
 	}
 
-	// Connect to MongoDB
-	if err := database.ConnectMongoDB(); err != nil {
-		log.Fatal("Failed to connect to MongoDB:", err)
+	// Connect to PostgreSQL (Neon)
+	if err := database.ConnectPostgres(); err != nil {
+		log.Fatal("Failed to connect to PostgreSQL:", err)
 	}
 
 	// Seed initial data if empty
-	seed.SeedMongoDB()
+	seed.SeedPostgres(nil)
 
 	// Run cleanup tasks on startup
 	if deleted, err := database.CleanupExpiredLeaveAttendance(); err != nil {

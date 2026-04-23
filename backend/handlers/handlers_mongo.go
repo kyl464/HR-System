@@ -36,7 +36,7 @@ func LoginMongo(c *gin.Context) {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"user_id":  user.ID.Hex(),
+		"user_id":  user.ID,
 		"email":    user.Email,
 		"role":     user.Role,
 		"is_admin": user.IsAdmin,
@@ -52,7 +52,7 @@ func LoginMongo(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"token": tokenString,
 		"user": gin.H{
-			"id":       user.ID.Hex(),
+			"id":       user.ID,
 			"email":    user.Email,
 			"name":     user.Name,
 			"role":     user.Role,
@@ -115,7 +115,7 @@ func GetCurrentUserMongo(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"id":       user.ID.Hex(),
+		"id":       user.ID,
 		"email":    user.Email,
 		"name":     user.Name,
 		"role":     user.Role,
@@ -133,7 +133,7 @@ func GetUserProfileMongo(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"id":              user.ID.Hex(),
+		"id":              user.ID,
 		"email":           user.Email,
 		"name":            user.Name,
 		"role":            user.Role,
@@ -188,7 +188,7 @@ func GetAttendanceCalendarMongo(c *gin.Context) {
 	events := []gin.H{}
 	for _, r := range records {
 		events = append(events, gin.H{
-			"id":    r.ID.Hex(),
+			"id":    r.ID,
 			"date":  r.Date,
 			"title": r.ActivityType,
 			"type":  r.Session,
@@ -279,7 +279,7 @@ func GetAttendanceRecapMongo(c *gin.Context) {
 		}
 
 		result = append(result, gin.H{
-			"id":                  r.ID.Hex(),
+			"id":                  r.ID,
 			"user_id":             r.UserID,
 			"user_name":           userName,
 			"date":                r.Date,
@@ -540,7 +540,7 @@ func AddWorkPermitMongo(c *gin.Context) {
 		Details:        input.LeaveType + " - " + input.Session,
 		Status:         "pending",
 		CreatedAt:      time.Now().Format("2006-01-02"),
-		RefID:          created.ID.Hex(),
+		RefID:          created.ID,
 		SupportingFile: input.SupportingFile,
 	}
 	database.AddPendingRequestMongo(req)
@@ -868,7 +868,7 @@ func CreateUserMongo(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"id":       created.ID.Hex(),
+		"id":       created.ID,
 		"email":    created.Email,
 		"name":     created.Name,
 		"role":     created.Role,
@@ -1011,7 +1011,7 @@ func CreateBranchMongo(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"id":     created.ID.Hex(),
+		"id":     created.ID,
 		"name":   created.Name,
 		"region": created.Region,
 	})
@@ -1174,7 +1174,7 @@ func GetAdminLogsMongo(c *gin.Context) {
 		}
 
 		logs = append(logs, gin.H{
-			"id":        att.ID.Hex(),
+			"id":        att.ID,
 			"timestamp": att.CreatedAt,
 			"type":      logType,
 			"user_name": userName,
@@ -1212,7 +1212,7 @@ func GetAdminLogsMongo(c *gin.Context) {
 		}
 
 		logs = append(logs, gin.H{
-			"id":        wp.ID.Hex(),
+			"id":        wp.ID,
 			"timestamp": wp.Date,
 			"type":      logType,
 			"user_name": userName,
